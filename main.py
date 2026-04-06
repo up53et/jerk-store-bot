@@ -27,9 +27,10 @@ def init_db():
 
 def main_menu():
     builder = InlineKeyboardBuilder()
-    builder.row(types.InlineKeyboardButton(text="⚡️ ЗАКАЗАТЬ ЖЕЛЕЗО", callback_data="buy"))
-    builder.row(types.InlineKeyboardButton(text="🌐 МОЯ СЕТЬ", callback_data="my_sub"))
-    builder.row(types.InlineKeyboardButton(text="👨‍💻 СВЯЗЬ С БОССОМ", callback_data="support"))
+    # Обновил названия кнопок по твоему запросу
+    builder.row(types.InlineKeyboardButton(text="📦 ЗАКАЗАТЬ РОУТЕР (С VPN)", callback_data="buy"))
+    builder.row(types.InlineKeyboardButton(text="🌐 МОЯ ПОДПИСКА", callback_data="my_sub"))
+    builder.row(types.InlineKeyboardButton(text="🛠 ПОДДЕРЖКА", callback_data="support"))
     return builder.as_markup()
 
 @dp.message(Command("start"))
@@ -41,7 +42,7 @@ async def cmd_start(message: types.Message):
     conn.commit()
     conn.close()
     await message.answer(
-        f"👋 Йо, **{message.from_user.first_name}**!\n\n"
+        f"👋 Пивет, **{message.from_user.first_name}**!\n\n"
         "Добро пожаловать в **JERK STORE** 🔌\n\n"
         "Выбирай пункт в меню ниже: 👇", 
         reply_markup=main_menu()
